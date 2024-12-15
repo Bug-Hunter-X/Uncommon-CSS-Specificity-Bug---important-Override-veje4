@@ -1,0 +1,21 @@
+The following CSS code snippet exhibits an uncommon issue related to specificity and inheritance:
+
+```css
+div {
+  font-size: 16px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.special p {
+  font-size: 14px !important;
+}
+
+.special p.important {
+  font-size: 20px;
+}
+```
+
+The unexpected behavior lies in the interaction between the `!important` declaration and the specificity of selectors.  The `.special p` selector has higher specificity than the `p` selector, but the `!important` declaration in `.special p` is overridden by the even more specific `.special p.important` selector which lacks the `!important` flag.
